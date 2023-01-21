@@ -1,3 +1,5 @@
+//! Ed25519 keys can be converted to X25519 keys, so that the same key pair can be used both for authenticated
+//! encryption (crypto_box) and for signatures (crypto_sign).
 #![no_std]
 #![allow(clippy::all)]
 mod field;
@@ -6,7 +8,7 @@ mod sha512;
 
 use field::FieldElement;
 
-// Convert ed25519 public key to curve25519
+/// Convert Ed25519 public key to Curve25519 public key.
 #[allow(non_snake_case)]
 pub fn ed25519_pk_to_curve25519(pk: [u8; 32]) -> [u8; 32] {
     let AY = FieldElement::from_bytes(&pk);
@@ -26,7 +28,7 @@ pub fn ed25519_pk_to_curve25519(pk: [u8; 32]) -> [u8; 32] {
     x.to_bytes()
 }
 
-// Convert ed25519 secret key to curve25519
+/// Convert Ed25519 secret key to Curve25519 secret key.
 pub fn ed25519_sk_to_curve25519(sk: [u8; 32]) -> [u8; 32] {
     let mut h = sha512::sha512(&sk);
 
