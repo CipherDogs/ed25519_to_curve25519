@@ -1,6 +1,6 @@
 [package]
 name = "ed25519_to_curve25519"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 authors = ["DEADBLACKCLOVER <deadblackclover@protonmail.com>"]
 description = "Convert ed25519 keys and sign to curve25519"
